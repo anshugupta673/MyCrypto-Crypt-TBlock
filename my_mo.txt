@@ -1,0 +1,58 @@
+fundamentally : blockchain is a list of lineked blocks, each block in the chain contains a link to the last blovk that came before it. Chain of links and it's linking those blocks.
+
+//very basic Hash, consistently generates unique value with every data input
+const lightningHash = (data) => {
+    return data + '*';
+}
+
+//blockchain class with an array that contains block instances first it generates blocks with all it's dummy values each lastHash matches the hash that came before.
+
+//JS class 
+blockclass Block {
+    constructor(data, hash, lastHash){
+        this.data = data;
+        this.hash = hash;
+        this.lastHash = lastHash; //cause when we create a new block, we'll specify a data hash and a last hash field
+    }
+}
+
+//instance of Block class
+const fooBlock = new Block('foo-data', 'foo-hash', 'foo-last-Hash');
+console.log(fooBlock);
+
+class Blockchain {
+    constructor() {
+        //Genesis block or the very first block
+        const genesis = new Block('gen-data', 'gen-hash', 'gen-lastHash');
+
+        this.chain = [genesis]; //an arr, idea is that this blockchain is going to have a list of Block instances within this chain array itself every new block is gonna be based on a prior block. 
+    }
+
+    addBlock(data) { //so now the block has data specified now we need the last hash and hash itself
+        const lastHash = this.chain(this.chain.length - 1).hash;
+        const hash = lightningHash(data + lastHash);           const block = new Block(data, hash, lastHash);
+       this.chain.push(block);
+    }
+}
+
+const fooBlockchain = new Blockchain();
+fooBlockchain.addBlock('one');
+fooBlockchain.addBlock('two');
+fooBlockchain.addBlock('three');
+
+console.log(fooBlockchain);
+
+//Block is a storage unit, block is storage unit itself, therefore the datadield specifies what the block is storing itself. 2nd Hashfield is the value generated for the block by taking the data and cryptographically transforming it. LastHash field creates a link b/w blocks for the blockchain.
+
+//node.js as backend JS engine
+//Jest is a JS lib to perform test on JS
+
+at the core block consist of 4 pieces of data,
+1. timestamp : we can use JS data object
+2. lastHash : hash of the block that came before it
+3. data to store, int, str, or rntire JS obj
+4. hash : hash itself for the block
+
+//let's create our first class
+
+//first block : genesis block origin of the blockchain hardcoded with dummy values

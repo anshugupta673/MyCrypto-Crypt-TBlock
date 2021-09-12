@@ -1,0 +1,24 @@
+{
+  "name": "a-blockchain-powered-cryptocurrency",
+  "version": "1.0.0",
+  "description": "A full-stack blockchain based cryptocurrency with backend + frontend with Node.js, Jest, Express, React, Heroku!",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anshugupta673/A-blockchain-powered-cryptocurrency.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anshugupta673/A-blockchain-powered-cryptocurrency/issues"
+  },
+  "homepage": "https://github.com/anshugupta673/A-blockchain-powered-cryptocurrency#readme",
+  "devDependencies": {
+    "jest": "^27.1.1"
+  },
+  "type": "module"
+}
