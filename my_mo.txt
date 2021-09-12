@@ -1,4 +1,4 @@
-fundamentally : blockchain is a list of lineked blocks, each block in the chain contains a link to the last blovk that came before it. Chain of links and it's linking those blocks.
+fundamentally : blockchain is a list of linked blocks, each block in the chain contains a link to the last blovk that came before it. Chain of links and it's linking those blocks.
 
 //very basic Hash, consistently generates unique value with every data input
 const lightningHash = (data) => {
@@ -8,7 +8,8 @@ const lightningHash = (data) => {
 //blockchain class with an array that contains block instances first it generates blocks with all it's dummy values each lastHash matches the hash that came before.
 
 //JS class 
-blockclass Block {
+block
+class Block {
     constructor(data, hash, lastHash){
         this.data = data;
         this.hash = hash;
@@ -30,8 +31,9 @@ class Blockchain {
 
     addBlock(data) { //so now the block has data specified now we need the last hash and hash itself
         const lastHash = this.chain(this.chain.length - 1).hash;
-        const hash = lightningHash(data + lastHash);           const block = new Block(data, hash, lastHash);
-       this.chain.push(block);
+        const hash = lightningHash(data + lastHash);           
+        const block = new Block(data, hash, lastHash);
+        this.chain.push(block);
     }
 }
 

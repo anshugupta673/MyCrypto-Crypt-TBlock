@@ -1,11 +1,21 @@
-//jest lib, keyword of jest lib called describe
+// jest lib, keyword of jest lib called describe
 // describe('name of block class', 'JS fun or call back fun it can run {} => {
     //setup variables and write tests around those variables
 
 // }')
-import Block from './block.js';
-import { GENESIS_DATA } from './config.js';
+//const Block = require('./block')
+{/* <script type="module" src="main.js"></script> */}
 
+// import Block from './block.js';
+// import { GENESIS_DATA } from './config.js';
+const Block = require('./block');
+const { GENESIS_DATA } = require('./config');
+// import Block, { genesis } from './block';
+// import { GENESIS_DATA } from './config';
+
+//setup a test using describe :Describe('name of the block class we are testing', () =>//a JS fun it can run//{
+    //DECLARE VARIABLE FOR EVERY RELEVANT FIELD IN THE BLOCK CLASS
+//};)
 describe('Block', () => {
     const timestamp = 'a-data';
     const lastHash = 'foo-hase';
@@ -21,6 +31,8 @@ describe('Block', () => {
     //to create a test we use it fun
     //it is very similar to describe fun takes string method as first argument and, 2nd call back fun ti run
     it('has a timestamp, lastHash, hash, and data property', () => {
+        //learn more about TDD development
+        //expect fun : takes one argument i.e. the value to test the value upon 
         expect(block.timestamp).toEqual(timestamp);
         expect(block.lastHash).toEqual(lastHash);
         expect(block.hash).toEqual(hash);
@@ -29,7 +41,10 @@ describe('Block', () => {
 
     //2nd describe to describe another group of tests for the overall block test itself
     //static functions in JS
+    //test for genesis() fun
     describe('genesis()', () => {
+        //not on an instance of a block insted on the block class_name itself
+        //here how are we gonna be able to call the genesis fun from the block class without creating an instance of the class yet, this is an example of calling a static function in JS
         const genesisBlock = Block.genesis(); 
 
         it('returns a Block instance', () => {
@@ -37,6 +52,7 @@ describe('Block', () => {
         });
     
         it('returns the genesis data', () => {
+            //JS implements classes as objects under the hood
             expect(genesisBlock).toEqual(GENESIS_DATA);
         });
     });
