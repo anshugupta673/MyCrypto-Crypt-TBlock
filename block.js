@@ -5,7 +5,7 @@ const { GENESIS_DATA } = require('./config');
         //and set a propertyon the class for each value
         //to set a property on the instance of a class we use this keyword
 class Block {
-    constructor({ timestamp, lastHash, hash, data }) {
+    constructor({ timestamp, lastHash, hash, data }) { //not wrapping arguments in a JS object
         this.timestamp = timestamp;
         this.lastHash = lastHash;
         this.hash = hash;

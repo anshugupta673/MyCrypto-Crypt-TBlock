@@ -6,4 +6,4 @@ const GENESIS_DATA = {
     data: []
 }; //screen case syntax for global value
 
-module.export = { GENESIS_DATA };
+module.exports = { GENESIS_DATA };

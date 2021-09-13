@@ -4,7 +4,6 @@
 
 // }')
 //const Block = require('./block')
-{/* <script type="module" src="main.js"></script> */}
 
 // import Block from './block.js';
 // import { GENESIS_DATA } from './config.js';
