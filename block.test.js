@@ -46,6 +46,8 @@ describe('Block', () => {
         //here how are we gonna be able to call the genesis fun from the block class without creating an instance of the class yet, this is an example of calling a static function in JS
         const genesisBlock = Block.genesis(); 
 
+        // console.log('genesisBlock : ', genesisBlock);
+
         it('returns a Block instance', () => {
             expect(genesisBlock instanceof Block).toEqual(true);
         });
@@ -53,6 +55,31 @@ describe('Block', () => {
         it('returns the genesis data', () => {
             //JS implements classes as objects under the hood
             expect(genesisBlock).toEqual(GENESIS_DATA);
+        });
+    });
+
+    describe('mineBlock()', () => {
+        //to mine a block this function should have a last block and some data to work with 
+        const lastBlock = Block.genesis();
+        const data = 'mined data';
+        //so we have the mined block fun with it's object arguments consist of the last block and the data
+        const minedBlock = Block.minedBlock({ lastBlock, data });
+    
+        if('returns a Block instance', () => {
+            expect('minedBlock instance of Block').toBe(true);
+        });
+    
+        //sets the lastHash variable 
+        it('sets the `lastHash` to be the `hash` of the lastBlock', () => {
+            expect(minedBlock.lastHash).toEqual(lastBlock.hash);
+        });
+
+        if('sets the `data`', () => {
+            expect(minedBlock.data).toEqual(data);
+        });
+    
+        it('sets a `timestamp`', () => {
+            expect(minedBlock.timestamp).not.toEqual(undefined);
         });
     });
 });

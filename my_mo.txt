@@ -58,3 +58,14 @@ at the core block consist of 4 pieces of data,
 //let's create our first class
 
 //first block : genesis block origin of the blockchain hardcoded with dummy values
+
+//Add a method to the block class called mine block, the mine block method will create a block based off a block input arguments that represents the last block for that block, as well as some data to store  within the new block itself. So 2nd argument is called data.
+
+//Creating a block requires some computational work for a blockchain to grow at a resonable pace.
+So to add a new mine block functionality we are gonna add a new section to the block called '___'.
+
+//Moving on to generating the unique hash value for the block
+The unique hash value is generated for the block is genereated from all the data fields particular to that block, this includes timestamp, data, and most importantly unique hash value of the block that came before it.
+Generated from the timestamp, given data, and the lastHash. Use SHA256-Secure hashing algorithm 256 represents teh sie if the 256 bits of the hash.
+e.g. foo -> is 256 0's and 1's we see it in hexadecimal form in hexadecimal characters where every 4bits by 1hex digit in the hex digit can be from zero to nine and eight f. 256/2 = 64 characters to represent all 256 bits of the binary in hexadecimal foerm.
+Also is a one way fun means we cannot decrypt the data.

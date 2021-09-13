@@ -17,6 +17,18 @@ class Block {
         //factory method (where fun creating/using instances of a class without using the constructor method)
         return new this(GENESIS_DATA);
     }
+
+    //take obj as arguments
+    //So now we have this static minedBlock fun, which would create a block based on the last block and new data. And this is going to be extremly useful as you develop the blockchain
+
+    //also to set a proper hash, we are gonna need to creat a generic hashing function that can generate a unique hash value based on the incoming requests.
+    static minedBlock({ lastBlock, data }){
+        return new this({
+            timestamp: Date.now(), 
+            lastHash: lastBlock.hash, 
+            data
+        });
+    }
 }
 
 module.exports = Block;
