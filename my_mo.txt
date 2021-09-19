@@ -1,4 +1,13 @@
-fundamentally : blockchain is a list of linked blocks, each block in the chain contains a link to the last blovk that came before it. Chain of links and it's linking those blocks.
+Blockchain is a distributed and decentralized ledger that stores data such as transactions, and that is publicly shared across all the nodes of it's network.
+
+Blockchain consist of a collection of blocks and eacch block acts as a storage unit. It is given a data field which is used to store information in the block itself. Every block has hash field, data field, input for the block's hash includes ..., lashhash field. And thanks to lasthashes we have a chain of blocks.
+
+Blockchain as a ledger, a ledger is a record keeping book to keep record of all economic transactions of an organizations it has payments, contracts, movemment of assets, etc. As a ledger blockchain serves a purpose of storing transactional data.
+Beyond that blockchain is adistributed ledger cause ledger itself is shared with everyone using the blockchain network. Everyone has a copy of blockchain ledger which gets updates everytime. Ledger is not controlled by a single entity.
+
+Cryptocurrency leverages the blockchain it does so in order to keep a public database of transactions that everyone can access.
+
+Fundamentally : blockchain is a list of linked blocks, each block in the chain contains a link to the last blovk that came before it. Chain of links and it's linking those blocks.
 
 //very basic Hash, consistently generates unique value with every data input
 const lightningHash = (data) => {
@@ -69,3 +78,16 @@ The unique hash value is generated for the block is genereated from all the data
 Generated from the timestamp, given data, and the lastHash. Use SHA256-Secure hashing algorithm 256 represents teh sie if the 256 bits of the hash.
 e.g. foo -> is 256 0's and 1's we see it in hexadecimal form in hexadecimal characters where every 4bits by 1hex digit in the hex digit can be from zero to nine and eight f. 256/2 = 64 characters to represent all 256 bits of the binary in hexadecimal foerm.
 Also is a one way fun means we cannot decrypt the data.
+
+API and network blockchain backend
+Get multiple blockchian instances interactn with each other, goal is to form network of nodes running a blockchain application. Initial way we get these nodes interact with each other is thru a common API.
+Then each node in the network is going to run the same API in order to expose common methods that can be used to both reach each other's info and send data to each other. 
+An API is a set of callable methods that allows external parties to call code in an existing system for the blockchain.
+For the blockchain sys two main methods we add to the API are : 
+1. Read the blockchain data
+2. Write to teh blokchain.
+
+To create the API we'll use a popular node.js framework called express, Express allows to create a web server that listens for a request and connections on a port of a OS. Now in this case we'll configure the express server to accept various HTTP requests.
+These http requiests will be made over the webdefined by the http e.g. a GET http request is associated with reading data. So we'll have a GET request to read data from the blockchain. On the other hand POST http request is associated with sending data to the webserver. POST request can carry data to add a new block to the chain.
+
+In the network there are gonna be multiple instances of the blockchain application that are going to be running theor own respective servers instances of the blockchain application. But here using the API respective blockchain instances will be able to read each other's data and add new block to the chain if necessary.
