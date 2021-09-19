@@ -5,24 +5,29 @@ Blockchain consist of a collection of blocks and eacch block acts as a storage u
 Blockchain as a ledger, a ledger is a record keeping book to keep record of all economic transactions of an organizations it has payments, contracts, movemment of assets, etc. As a ledger blockchain serves a purpose of storing transactional data.
 Beyond that blockchain is adistributed ledger cause ledger itself is shared with everyone using the blockchain network. Everyone has a copy of blockchain ledger which gets updates everytime. Ledger is not controlled by a single entity.
 
-Cryptocurrency leverages the blockchain it does so in order to keep a public database of transactions that everyone can access.
+Cryptocurrency leverages the blockchain it does so in order to keep a public database of transactions that everyone can access. 
+
+Mining :  adding transactions to the block, see when people submit transactions to the cryptocurrency network the transacaion then joins the transaction pool transactions initially stays in an unconfirmed state, miners then take a group of unconfirmed transactions and use them as the data to be officially recorded within a new block in a chain. And to gain the right to add a new block the miner will have to solve a computational puzzle called the proof of work algorithm. Once a miner solves a proof of work algorithm they can submit a block to the network. And this proof of work needs to be verified by another miner. And as a reward of doing the task of mining the miner will receive some cryptocurrecny so miners are trying to add new block.
 
 Fundamentally : blockchain is a list of linked blocks, each block in the chain contains a link to the last blovk that came before it. Chain of links and it's linking those blocks.
 
-//very basic Hash, consistently generates unique value with every data input
+//very basic Hash function, consistently generates unique value with every data input
+//generate unique value for every data that comes in
 const lightningHash = (data) => {
     return data + '*';
 }
 
 //blockchain class with an array that contains block instances first it generates blocks with all it's dummy values each lastHash matches the hash that came before.
 
+//A very bais Blockchain implementation
 //JS class 
 block
 class Block {
+    //constructor method for the block class with data, hash, lastHash
     constructor(data, hash, lastHash){
         this.data = data;
         this.hash = hash;
-        this.lastHash = lastHash; //cause when we create a new block, we'll specify a data hash and a last hash field
+        this.lastHash = lastHash; //cause when we create a new block, we'll specify a data, hash, and a last hash field
     }
 }
 
@@ -32,15 +37,19 @@ console.log(fooBlock);
 
 class Blockchain {
     constructor() {
-        //Genesis block or the very first block
+        //Genesis block or the very first block 
         const genesis = new Block('gen-data', 'gen-hash', 'gen-lastHash');
 
+        //local chain field for the blockchain instance
         this.chain = [genesis]; //an arr, idea is that this blockchain is going to have a list of Block instances within this chain array itself every new block is gonna be based on a prior block. 
     }
 
+    //generic addBlock method
     addBlock(data) { //so now the block has data specified now we need the last hash and hash itself
         const lastHash = this.chain(this.chain.length - 1).hash;
         const hash = lightningHash(data + lastHash);           
+
+        //block, and then push the block in the chain
         const block = new Block(data, hash, lastHash);
         this.chain.push(block);
     }
